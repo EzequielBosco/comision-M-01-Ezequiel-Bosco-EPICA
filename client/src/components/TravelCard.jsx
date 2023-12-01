@@ -16,7 +16,7 @@ export const TravelCard = ({ travel }) => {
   }
 
   return (
-    <div className="bg-gray-200 max-w-md w-full p-5 pt-1 rounded-md">
+    <div className="bg-gray-100 max-w-md w-full p-5 pt-1 rounded-md">
       {travel.imageUrl && (
         <img
           src={travel.imageUrl}
@@ -27,12 +27,15 @@ export const TravelCard = ({ travel }) => {
       <header className="flex justify-between flex-col">
         <h2 className="text-2xl pt-2 font-semibold mb-4">{travel.title}</h2>
         {/* <p className="mb-4">{travel.description}</p> */}
-        <p className="mb-4">Ubicación: {travel.location}</p>
-        <p className="text-2x2 font-bold mb-4">
+        <p className="mb-2">Ubicación: {travel.location}</p>
+        <p className="text-2x2 mb-2">
           Fecha inicio: {formatStartDate(travel.startDate)}
         </p>
+        <p className="font-bold pb-2">
+          Precio: ${travel.price}
+        </p>
       </header>
-        <div className="flex gap-x-2 items-center">
+        <div className="flex gap-x-2 mt-2 items-center justify-between">
           <button
             onClick={handleDelete}
             className="text-red-500 hover:text-red-500 cursor-pointer"

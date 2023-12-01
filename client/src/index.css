@@ -13,6 +13,10 @@
 body {
   background-color: var(--color-white);
   color: var(--color-dark);
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
 }
 
 .color {
@@ -20,4 +24,10 @@ body {
 }
 .color:hover {
   color: var(--color-1);
+}
+.back-color {
+  background-color: var(--color);
+}
+.back-color:hover {
+  background-color: var(--color-1);
 }

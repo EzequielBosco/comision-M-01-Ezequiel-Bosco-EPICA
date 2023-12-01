@@ -23,11 +23,6 @@ export const TravelFormPage = () => {
   }, [params.id, setValue])
 
   const onSubmit = handleSubmit((data) => {
-    // console.log(data);
-    //A) esto es para probar para crear viaje
-    // createTravel(data);
-    // navigate("/travel");
-
     //B) en caso de que actualicemos tenemos que hacer la condicional
     if (params.id) {
       updateTravel(params.id, data);
@@ -41,73 +36,75 @@ export const TravelFormPage = () => {
   })
 
   return (
-    <div>
-      <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
-        <form onSubmit={onSubmit}>
-          <label htmlFor="title">Título</label>
-          <input
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-            type="text"
-            placeholder="Titulo"
-            {...register("title")}
-            autoFocus
-          />
-          
-          <label htmlFor="title">Descripción</label>
-          <textarea
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-            rows="3"
-            placeholder="Descripción"
-            {...register("description")}
-          ></textarea>
+    <>     
+      <div className="bg-white h-screen flex items-center justify-center">
+        <div className="max-w-md w-full p-10 rounded-md bg-gray-100">
+          <form onSubmit={onSubmit}>
+            <label htmlFor="title">Título</label>
+            <input
+              className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+              type="text"
+              placeholder="Titulo"
+              {...register("title")}
+              autoFocus
+            />
+            
+            <label htmlFor="title">Descripción</label>
+            <textarea
+              className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+              rows="3"
+              placeholder="Descripción"
+              {...register("description")}
+            ></textarea>
 
-          <label>Ubicación</label>
-          <input
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-            type="text"
-            placeholder="Ubicación"
-            {...register("location")}
-            autoFocus
-          />
+            <label>Ubicación</label>
+            <input
+              className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+              type="text"
+              placeholder="Ubicación"
+              {...register("location")}
+              autoFocus
+            />
 
-          <label htmlFor="startDate">Fecha de Inicio</label>
-          <input
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-            type="date"
-            {...register("startDate")}
-          />
+            <label htmlFor="startDate">Fecha de Inicio</label>
+            <input
+              className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+              type="date"
+              {...register("startDate")}
+            />
 
-          <label htmlFor="endDate">Fecha de Fin</label>
-          <input
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-            type="date"
-            {...register("endDate")}
-          />
+            <label htmlFor="endDate">Fecha de Fin</label>
+            <input
+              className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+              type="date"
+              {...register("endDate")}
+            />
 
-          <label htmlFor="price">Precio</label>
-          <input
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-            type="number"
-            placeholder="Precio"
-            {...register("price")}
-          />
+            <label htmlFor="price">Precio</label>
+            <input
+              className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+              type="number"
+              placeholder="Precio"
+              {...register("price")}
+            />
 
-          <label htmlFor="imageUrl">URL de la Imagen</label>
-          <input
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-            type="text"
-            placeholder="URL de la Imagen"
-            {...register("imageUrl")}
-          />
+            <label htmlFor="imageUrl">URL de la Imagen</label>
+            <input
+              className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+              type="text"
+              placeholder="URL de la Imagen"
+              {...register("imageUrl")}
+            />
 
-          <button
-            className="flex h-10 px-6 font-semibold rounded-md bg-green-900 text-white my-5"
-            type="submit"
-          >
-            Crear
-          </button>
-        </form>
+            <button
+              className="flex items-center h-8 px-7 font-semibold rounded-md back-color text-white my-5"
+              type="submit"
+            >
+              Crear
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
