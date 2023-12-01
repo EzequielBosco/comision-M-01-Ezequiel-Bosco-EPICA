@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import Navbar from "../components/Navbar";
 import { useTravel } from "../context/TravelContext";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -39,11 +38,11 @@ export const TravelFormPage = () => {
     } else {
       createTravel(data);
     }
-    navigate("/travel");
+    navigate("/");
   });
+
   return (
     <div>
-      <Navbar />
       <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
         <form onSubmit={onSubmit}>
           <input

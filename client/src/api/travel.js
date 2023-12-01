@@ -1,6 +1,6 @@
 import axios from "./setCredentialsAxios";
 
-export const getTravelReq = () => axios.get("/travel");
+export const getTravelReq = () => axios.get("/");
 
 export const getTravelByIdReq = (id) => axios.get(`/travel/${id}`);
 

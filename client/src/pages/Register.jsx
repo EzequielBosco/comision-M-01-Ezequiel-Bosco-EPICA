@@ -20,7 +20,7 @@ export const Register = () => {
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (isAuth) navigate("/travel");
+    if (isAuth) navigate("/");
   }, [isAuth]);
 
   //Esta función es la que mandamos al contexto para obtener los valores del usuario y registrarlo

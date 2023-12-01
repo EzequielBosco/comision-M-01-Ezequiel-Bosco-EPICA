@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import LogoSvg from '../assets/airbnb.svg';
 import { useAuth } from "../context/AuthContext";
 
 function classNames(...classes) {
@@ -31,7 +32,7 @@ export default function Navbar() {
                 </div>
                 <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                   <Link to={"/"}>
-                    <img src="../assets/logoairbnb.svg" className="h-8 w-auto" alt="Blog Airbnb" />
+                    <img src={LogoSvg} className="h-100 w-auto" alt="Blog Airbnb" />
                   </Link>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
