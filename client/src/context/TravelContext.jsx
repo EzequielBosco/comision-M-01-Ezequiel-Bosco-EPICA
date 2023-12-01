@@ -28,10 +28,11 @@ export const TravelProvider = ({ children }) => {
 
   //2) Buscar
   const getAllTravel = async () => {
-    const res = await getTravelReq();
-    // console.log(res);
     try {
-      setTravel(res.data);
+      const res = await getTravelReq();
+      if (res.data) {
+        setTravel(res.data);
+      }
     } catch (error) {
       console.log(error);
     }

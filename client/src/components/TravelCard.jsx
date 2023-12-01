@@ -2,28 +2,47 @@ import { useTravel } from "../context/TravelContext";
 import { Link } from "react-router-dom";
 
 export const TravelCard = ({ travel }) => {
-  const { deleteTravel } = useTravel();
-  //   console.log(travel);
+  const { deleteTravel } = useTravel()
+
+  const handleDelete = () => {
+    if (window.confirm("¿Estás seguro de que deseas eliminar este viaje?")) {
+      deleteTravel(travel._id)
+    }
+  }
+
+  const formatStartDate = (date) => {
+    const formattedDate = new Date(date).toLocaleDateString();
+    return formattedDate;
+  }
+
   return (
-    <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
-      <header className="flex justify-between">
-        <h1 className="text-2xl font-semibold text-white">{travel.title}</h1>
+    <div className="bg-gray-200 max-w-md w-full p-5 pt-1 rounded-md">
+      {travel.imageUrl && (
+        <img
+          src={travel.imageUrl}
+          alt={`Imagen para ${travel.title}`}
+          className="w-full h-64 object-cover mt-4 rounded-md"
+        />
+      )}
+      <header className="flex justify-between flex-col">
+        <h2 className="text-2xl pt-2 font-semibold mb-4">{travel.title}</h2>
+        {/* <p className="mb-4">{travel.description}</p> */}
+        <p className="mb-4">Ubicación: {travel.location}</p>
+        <p className="text-2x2 font-bold mb-4">
+          Fecha inicio: {formatStartDate(travel.startDate)}
+        </p>
+      </header>
         <div className="flex gap-x-2 items-center">
           <button
-            onClick={() => {
-              //   console.log(travel._id);
-              deleteTravel(travel._id);
-            }}
+            onClick={handleDelete}
+            className="text-red-500 hover:text-red-500 cursor-pointer"
           >
-            eliminar
+            Eliminar
           </button>
-          <Link to={`/travel/${travel._id}`}>editar</Link>
+          <Link to={`/travel/${travel._id}`}>
+            <p className="hover:text-red-500 cursor-pointer">Editar</p></Link>
+          <Link to={`/travel/${travel._id}`}><p className="hover:text-red-500 cursor-pointer">Ver más</p></Link>
         </div>
-      </header>
-      <p className="">{travel.description}</p>
-      <p className="text-2xl font-bold">
-        {new Date(travel.date).toLocaleDateString()}
-      </p>
     </div>
-  );
-};
+  )
+}

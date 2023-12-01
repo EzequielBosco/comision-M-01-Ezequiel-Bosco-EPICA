@@ -4,6 +4,7 @@ import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { HomePage } from "./pages/HomePage";
 import { TravelFormPage } from "./pages/TravelFormPage";
+import { TravelDetailPage } from "./pages/TravelDetailPage";
 import { Profile } from "./pages/Profile";
 import { ProtectedRoutes } from "./routes/ProtectedRoutes";
 import { TravelProvider } from "./context/TravelContext";
@@ -22,6 +23,7 @@ export const App = () => {
             <Route path="/register" element={<Register />} />
             <Route element={<ProtectedRoutes />}>
               <Route path="/add-travel" element={<TravelFormPage />} />
+              <Route path="/travel/:id" element={<TravelDetailPage />} />
               <Route path="/travel/:id" element={<TravelFormPage />} />
               <Route path="/profile" element={<Profile />} />
             </Route>

@@ -25,8 +25,8 @@ export const HomePage = () => {
         <h1 className="text-3xl font-semibold text-center my-8">Viajes</h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
-          {travel.map((travel, i) => (
-            <TravelCard travel={travel} key={i} />
+          {travel.map((travelItem, i) => (
+            <TravelCard travel={travelItem} key={i} />
             ))}
         </div>
       </div>

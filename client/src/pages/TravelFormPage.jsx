@@ -1,31 +1,27 @@
 import { useForm } from "react-hook-form";
 import { useTravel } from "../context/TravelContext";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 
 export const TravelFormPage = () => {
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit, setValue } = useForm()
 
-  const { travel, createTravel, getTravelById, updateTravel } = useTravel();
-  // console.log(travel);
-  // console.log(createTravel);
+  const { createTravel, getTravelById, updateTravel } = useTravel()
 
   //carga la aplicación lea ese parametro de la url
-  const params = useParams();
+  const params = useParams()
   useEffect(() => {
-    // console.log(params);
     async function loadTravel() {
       if (params.id) {
-        const travel = await getTravelById(params.id);
+        const travel = await getTravelById(params.id)
         //el setValue del useForm
-        setValue("title", travel.title);
-        setValue("description", travel.description);
+        setValue("title", travel.title)
+        setValue("description", travel.description)
       }
     }
     loadTravel();
-  }, []);
+  }, [params.id, setValue])
 
-  const navigate = useNavigate();
   const onSubmit = handleSubmit((data) => {
     // console.log(data);
     //A) esto es para probar para crear viaje
@@ -38,13 +34,17 @@ export const TravelFormPage = () => {
     } else {
       createTravel(data);
     }
-    navigate("/");
-  });
+    setTimeout(() => {
+      // Redirige al usuario al inicio
+      window.location.href = "/"
+    }, 1000)
+  })
 
   return (
     <div>
       <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
         <form onSubmit={onSubmit}>
+          <label htmlFor="title">Título</label>
           <input
             className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
             type="text"
@@ -52,6 +52,8 @@ export const TravelFormPage = () => {
             {...register("title")}
             autoFocus
           />
+          
+          <label htmlFor="title">Descripción</label>
           <textarea
             className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
             rows="3"
@@ -59,13 +61,50 @@ export const TravelFormPage = () => {
             {...register("description")}
           ></textarea>
 
-          <label>Completado</label>
-          <input type="checkbox" {...register("completed")} />
+          <label>Ubicación</label>
+          <input
+            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+            type="text"
+            placeholder="Ubicación"
+            {...register("location")}
+            autoFocus
+          />
+
+          <label htmlFor="startDate">Fecha de Inicio</label>
+          <input
+            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+            type="date"
+            {...register("startDate")}
+          />
+
+          <label htmlFor="endDate">Fecha de Fin</label>
+          <input
+            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+            type="date"
+            {...register("endDate")}
+          />
+
+          <label htmlFor="price">Precio</label>
+          <input
+            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+            type="number"
+            placeholder="Precio"
+            {...register("price")}
+          />
+
+          <label htmlFor="imageUrl">URL de la Imagen</label>
+          <input
+            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+            type="text"
+            placeholder="URL de la Imagen"
+            {...register("imageUrl")}
+          />
+
           <button
             className="flex h-10 px-6 font-semibold rounded-md bg-green-900 text-white my-5"
             type="submit"
           >
-            Guardar
+            Crear
           </button>
         </form>
       </div>
