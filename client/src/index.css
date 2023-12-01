@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color: rgb(255, 56, 92);
+  --color-white: rgb(255, 255, 255);
+  --color-dark: rgb(34, 34, 34);
+  --color-grey: rgb(247, 247, 247)
+}
+
+body {
+  background-color: var(--color-white);
+  color: var(--color-dark);
+}
