@@ -8,7 +8,9 @@ export const getAllTravels = async (req, res) => {
       //para cuando agregamos la logica para cada usuario
       user: req.user.id,
       //para ver toda la información el populate
-    }).populate("user"); //con esto mostramos toda la info
+    })
+    .populate({ path: "user", select: 'username' }) // muestro info de users
+    .populate({ path: "comments", populate: { path: "user", select: "username" } }) // muestro info de comments
 
     res.status(200).json(allTravels);
   } catch (error) {
@@ -22,7 +24,9 @@ export const getAllTravels = async (req, res) => {
 export const getTravelById = async (req, res) => {
   const { id } = req.params;
   try {
-    const travelFound = await Travel.findById(id);
+    const travelFound = await Travel.findById(id)
+    .populate({ path: "user", select: 'username' }) // muestro info de users
+    .populate({ path: "comments", populate: { path: "user", select: "username" } }) // muestro info de comments
 
     if (!travelFound)
       return res.status(404).json({ message: "No se encontró la viaje" });
@@ -30,7 +34,7 @@ export const getTravelById = async (req, res) => {
   } catch (error) {
     return res
       .status(400)
-      .json({ message: "Error al buscar la viaje por Id", error });
+      .json({ message: "Error al buscar el viaje por Id", error });
   }
 };
 
@@ -53,7 +57,7 @@ export const createTravel = async (req, res) => {
     const savedTravel = await newTravel.save();
     res.status(200).json(savedTravel);
   } catch (error) {
-    return res.status(400).json({ message: "Error al crear la viaje", error });
+    return res.status(400).json({ message: "Error al crear el viaje", error });
   }
 }
 
@@ -65,7 +69,7 @@ export const updateTravel = async (req, res) => {
     }).populate("user");
 
     if (!updateTravel)
-      return res.status(404).json({ message: "viaje no encontrada" });
+      return res.status(404).json({ message: "viaje no encontrado" });
 
     res.status(200).json(updatedTravel);
   } catch (error) {}
@@ -80,11 +84,11 @@ export const deleteTravel = async (req, res) => {
     if (!deletedTravel)
       return res
         .status(404)
-        .json({ message: "No se encontró la viaje para eliminar" });
+        .json({ message: "No se encontró el viaje para eliminar" });
     res.status(200).json({ message: "viaje eliminada" });
   } catch (error) {
     return res
       .status(400)
-      .json({ message: "Error al intentar eliminar la viaje", error });
+      .json({ message: "Error al intentar eliminar el viaje", error });
   }
 };

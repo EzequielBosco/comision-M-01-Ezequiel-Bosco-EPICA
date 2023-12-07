@@ -16,6 +16,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    travels: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Travel",
+      },
+    ],
   },
   {
     timestamps: true,

@@ -24,8 +24,8 @@ export const Login = () => {
   });
   return (
     <div className="flex h-screen items-center justify-center">
-      <div className="bg-zinc-900 max-w-md p-10 rounded-md">
-        <h1 className="text-3xl text-center font-semibold mb-10">Login</h1>
+      <div className="bg-gray-100 max-w-md p-10 rounded-md">
+        <h1 className="text-3xl text-center font-semibold mb-10">Iniciar sesión</h1>
         {loginErrors.map((err, i) => (
           <div key={i} className="bg-red-800 text-white">
             {err}
@@ -54,10 +54,10 @@ export const Login = () => {
             <p className="text-red-400">El Password es requerido</p>
           )}
           <button
-            className="h-10 px-6 font-semibold rounded-md bg-blue-500 text-white"
+            className="h-10 px-6 font-semibold rounded-md back-color text-white"
             type="submit"
           >
-            Login
+            Iniciar sesión
           </button>
         </form>
 
@@ -65,9 +65,9 @@ export const Login = () => {
           ¿No tienes cuenta aún?{" "}
           <Link
             to="/register"
-            className=" px-3 font-semibold rounded-md bg-green-500 text-white "
+            className="p-2 px-4 font-semibold rounded-md back-color text-white "
           >
-            Registrarse
+            Registrarme
           </Link>
         </p>
       </div>

@@ -33,9 +33,9 @@ export const Register = () => {
   });
   return (
     <div className="flex h-screen items-center justify-center">
-      <div className="bg-zinc-900 max-w-md p-8 rounded-md">
+      <div className="bg-gray-100 max-w-md p-8 rounded-md">
         {/* 1) FORMULARIO */}
-        <h1 className="text-3xl text-center font-semibold mb-5">Register</h1>
+        <h1 className="text-3xl text-center font-semibold mb-5">Registro</h1>
         {authErrors.map((err, i) => (
           <div key={i} className="bg-red-800 text-white">
             {err}
@@ -73,19 +73,19 @@ export const Register = () => {
             <p className="text-red-400">El Password es requerido</p>
           )}
           <button
-            className="h-10 px-6 font-semibold rounded-md bg-blue-500 text-white my-3"
+            className="h-10 px-6 font-semibold rounded-md back-color text-white my-3"
             type="submit"
           >
             Registrarse
           </button>
         </form>
         <p className="flex justify-between mt-10">
-          ¿Tienes cuenta?{" "}
+          ¿Ya tienes cuenta?{" "}
           <Link
             to="/login"
-            className=" px-3 font-semibold rounded-md bg-green-500 text-white "
+            className="p-2 font-semibold rounded-md back-color text-white "
           >
-            Loguearse
+            Iniciar sesión
           </Link>
         </p>
       </div>

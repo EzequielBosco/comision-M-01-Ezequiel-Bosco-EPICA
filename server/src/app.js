@@ -11,6 +11,7 @@ import passport from "passport"
 import LocalStrategy from "passport-local"
 import { validationResult } from "express-validator"
 import { validateRegister, validateLogin, handleErrorValidations } from "./middlewares/validateAuth.js";
+import userModel from "./models/user.model.js";
 
 const app = express();
 
@@ -47,7 +48,7 @@ passport.use(
     },
     async (email, password, done) => {
       try {
-        const user = await User.findOne({ email })
+        const user = await userModel.findOne({ email })
 
         if (!user) {
           return done(null, false, { message: "Usuario no encontrado" })
