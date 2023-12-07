@@ -23,8 +23,8 @@ export const Login = () => {
     signin(data);
   });
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="bg-gray-100 max-w-md p-10 rounded-md">
+    <div className="flex mt-14 items-center justify-center">
+      <div className="bg-gray-100 mt-14 max-w-md p-10 rounded-md">
         <h1 className="text-3xl text-center font-semibold mb-10">Iniciar sesión</h1>
         {loginErrors.map((err, i) => (
           <div key={i} className="bg-red-800 text-white">

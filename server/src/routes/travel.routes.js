@@ -10,7 +10,7 @@ import { authRequired } from "../middlewares/validateToken.js";
 
 const routes = Router();
 
-routes.get("/", authRequired, getAllTravels);
+routes.get("/", getAllTravels);
 routes.get("/travel/:id", authRequired, getTravelById);
 routes.post("/travel", authRequired, createTravel);
 routes.delete("/travel/:id", authRequired, deleteTravel);
@@ -24,7 +24,7 @@ import {
   updateComment,
 } from "../controllers/comment.controllers.js";
 
-routes.get("/travel/:travelId/comments", authRequired, getAllComments);
+routes.get("/travel/:travelId/comments", getAllComments);
 routes.get("/travel/:travelId/comment/:commentId", authRequired, getCommentById);
 routes.post("/travel/:travelId/comment", authRequired, createComment);
 routes.delete("/travel/:travelId/comment/:commentId", authRequired, deleteComment);

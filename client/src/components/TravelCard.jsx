@@ -1,12 +1,18 @@
 import { useTravel } from "../context/TravelContext";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { CommentForm } from "../components/CommentForm"
+import toast from 'react-hot-toast'
 
 export const TravelCard = ({ travel }) => {
   const { deleteTravel } = useTravel()
+  const { user } = useAuth()
 
-  const handleDelete = () => {
-    if (window.confirm("¿Estás seguro de que deseas eliminar este viaje?")) {
-      deleteTravel(travel._id)
+  const handleDelete = async () => {
+    const userConfirmed = window.confirm("¿Estás seguro de que deseas eliminar este viaje?")
+    if (userConfirmed) {
+      await deleteTravel(travel._id)
+      toast.success("Viaje eliminado con éxito")
     }
   }
 
@@ -36,17 +42,24 @@ export const TravelCard = ({ travel }) => {
           Precio: ${travel.price}
         </p>
       </header>
-        <div className="flex gap-x-2 mt-2 items-center justify-between">
-          <button
-            onClick={handleDelete}
-            className="text-red-500 hover:text-red-500 cursor-pointer"
-          >
-            Eliminar
-          </button>
-          <Link to={`/travel/${travel._id}`}>
-            <p className="hover:text-red-500 cursor-pointer">Editar</p></Link>
+        <div className="flex gap-x-2 mt-2 items-center justify-between pb-5">
+          {user && (
+            <>
+              <button
+                onClick={handleDelete}
+                className="text-red-500 hover:text-red-500 cursor-pointer"
+              >
+                Eliminar
+              </button>
+              <Link to={`/edit-travel/${travel._id}`}>
+                <p className="hover:text-red-500 cursor-pointer">Editar</p>
+              </Link>
+            </>
+          )}
           <Link to={`/travel/${travel._id}`}><p className="hover:text-red-500 cursor-pointer">Ver más</p></Link>
         </div>
+        <hr />
+        <CommentForm travelId={travel.id} comments={travel.comments}/>
     </div>
   )
 }

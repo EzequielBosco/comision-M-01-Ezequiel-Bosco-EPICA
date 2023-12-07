@@ -4,11 +4,7 @@ import Travel from "../models/travel.model.js";
 export const getAllTravels = async (req, res) => {
   try {
     //primero mostramos el find sin atributos y despues con atributos
-    const allTravels = await Travel.find({
-      //para cuando agregamos la logica para cada usuario
-      user: req.user.id,
-      //para ver toda la información el populate
-    })
+    const allTravels = await Travel.find()
     .populate({ path: "user", select: 'username' }) // muestro info de users
     .populate({ path: "comments", populate: { path: "user", select: "username" } }) // muestro info de comments
 
@@ -82,13 +78,10 @@ export const deleteTravel = async (req, res) => {
     const deletedTravel = await Travel.findByIdAndDelete(id);
 
     if (!deletedTravel)
-      return res
-        .status(404)
-        .json({ message: "No se encontró el viaje para eliminar" });
-    res.status(200).json({ message: "viaje eliminada" });
+      return res.status(404).json({ success: false, message: "No se encontró el viaje para eliminar" });
+
+    res.status(200).json({ success: true, message: "Viaje eliminado con éxito" });
   } catch (error) {
-    return res
-      .status(400)
-      .json({ message: "Error al intentar eliminar el viaje", error });
+    return res.status(400).json({ success: false, message: "Error al intentar eliminar el viaje", error });
   }
 };

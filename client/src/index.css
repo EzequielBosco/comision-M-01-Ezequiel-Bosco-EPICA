@@ -15,8 +15,12 @@ body {
   color: var(--color-dark);
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
   min-width: 320px;
   min-height: 100vh;
+  width: 100%;
+  position: relative;
 }
 
 .color {

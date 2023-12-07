@@ -14,7 +14,7 @@ export const HomePage = () => {
     return (
       <>
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-semibold text-center my-8">No hay viajes publicados todavía...</h2>
+          <h2 className="text-2xl font-semibold text-center my-8">No hay viajes publicados...</h2>
         </div>
       </>
     );

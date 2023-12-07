@@ -32,8 +32,8 @@ export const Register = () => {
     signup(values);
   });
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="bg-gray-100 max-w-md p-8 rounded-md">
+    <div className="flex mt-14 items-center justify-center">
+      <div className="bg-gray-100 mt-14 max-w-md p-8 rounded-md">
         {/* 1) FORMULARIO */}
         <h1 className="text-3xl text-center font-semibold mb-5">Registro</h1>
         {authErrors.map((err, i) => (

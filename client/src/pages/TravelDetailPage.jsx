@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getTravelByIdReq } from "../api/travel";
 import { CommentForm } from "../components/CommentForm"
+import toast from 'react-hot-toast'
 
 export const TravelDetailPage = () => {
   const { id } = useParams();
   const [travel, setTravel] = useState(null);
+
+  const handleDelete = async () => {
+    await deleteTravel(travel._id);
+    toast.success("Viaje eliminado con éxito");
+  }
 
   useEffect(() => {
     const fetchTravelDetails = async () => {
@@ -30,8 +36,8 @@ export const TravelDetailPage = () => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
-      <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+    <div className="max-w-2xl mx-auto p-6 m-5 mb-14 ">
+      <div className="rounded-lg overflow-hidden shadow-lg mb-10 bg-gray-100">
         <img
           src={travel.imageUrl}
           alt={travel.title}
@@ -60,6 +66,15 @@ export const TravelDetailPage = () => {
             <span className="text-gray-600">Fecha de fin:</span>
             <span className="ml-2">{formatStartDate(travel.endDate)}</span>
           </div>
+          <button
+            onClick={handleDelete}
+            className="text-red-500 hover:text-red-500 cursor-pointer"
+          >
+            Eliminar
+          </button>
+          <Link to={`/edit-travel/${travel._id}`}>
+            <p className="hover:text-red-500 cursor-pointer">Editar</p>
+          </Link>
           <hr />
         </div>
         <CommentForm travelId={id} comments={travel.comments}/>
