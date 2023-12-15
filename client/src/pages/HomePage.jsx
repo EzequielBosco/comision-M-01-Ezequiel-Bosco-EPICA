@@ -21,10 +21,10 @@ export const HomePage = () => {
 
   return (
     <>
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 pb-14">
         <h1 className="text-3xl font-semibold text-center my-8">Viajes</h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center mb-12">
           {travel.map((travelItem, i) => (
             <TravelCard travel={travelItem} key={i} />
             ))}

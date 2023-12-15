@@ -33,7 +33,6 @@ export const TravelCard = ({ travel }) => {
       <header className="flex justify-between flex-col">
         <h2 className="text-2xl pt-2 font-semibold mb-4">{travel.title}</h2>
         <p><span className="pt-2 font-semibold mb-4">Autor:</span> {travel.user.username}</p>
-        {/* <p className="mb-4">{travel.description}</p> */}
         <p className="mb-2">Ubicación: {travel.location}</p>
         <p className="text-2x2 mb-2">
           Fecha inicio: {formatStartDate(travel.startDate)}
